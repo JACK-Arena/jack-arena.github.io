@@ -42,5 +42,8 @@ show(
     df_ats.reset_index(drop=True),
     index=False,
     ordering=False,
+    paging=False,
+    searching=False,
+    info=False
 )
 ```

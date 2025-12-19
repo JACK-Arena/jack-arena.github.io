@@ -42,5 +42,8 @@ show(
     df_2022.reset_index(drop=True),
     index=False,
     ordering=False,
+    paging=False,
+    searching=False,
+    info=False
 )
 ```
