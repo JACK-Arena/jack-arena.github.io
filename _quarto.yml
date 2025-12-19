@@ -13,6 +13,12 @@ website:
         menu:
           - text: 2025 Season
             href: doppelkopf/2025.qmd
+          - text: 2024 Season
+            href: doppelkopf/2024.qmd
+          - text: 2023 Season
+            href: doppelkopf/2023.qmd
+          - text: 2022 Season
+            href: doppelkopf/2022.qmd
           - text: "---"
           - text: All Time Stats
             href: doppelkopf/all-time-stats.qmd

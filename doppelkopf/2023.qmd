@@ -1,0 +1,46 @@
+---
+title: "2023 Season"
+---
+
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+
+from itables import show
+import pandas as pd
+
+df = pd.read_csv("../assets/doppelkopf/results.csv")
+df["date"] = pd.to_datetime(df["date"], format="%d.%m.%Y")
+
+df_2023 = (
+    df[df["date"].dt.year == 2023]
+    .sort_values("date")
+    .rename(columns={
+        "date": "Datum",
+        "seating": "Reihenfolge",
+        "jakob": "Jakob",
+        "adam": "Adam",
+        "christian": "Christian",
+        "konrad": "Konrad",
+    })
+    .reset_index(drop=True)
+)
+
+players = ["Jakob", "Adam", "Christian", "Konrad"]
+totals = df_2023[players].sum()
+
+df_2023.loc[len(df_2023)] = {
+    "Datum": "",
+    "Reihenfolge": "Gesamt",
+    **totals.to_dict()
+}
+
+df_2023["Datum"] = pd.to_datetime(df_2023["Datum"], format="%d.%m.%Y").astype("string").fillna("")
+
+show(
+    df_2023.reset_index(drop=True),
+    index=False,
+    ordering=False,
+)
+```
