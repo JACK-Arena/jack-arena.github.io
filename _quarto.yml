@@ -7,7 +7,8 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: Team JACK
+
 
 format:
   html:
