@@ -1,13 +1,24 @@
 project:
   type: website
+  resources: assets
   output-dir: docs
 
 website:
   title: "JACK Arena"
   navbar:
     left:
-      - href: index.qmd
-        text: Team JACK
+      - text: Team JACK
+        href: index.qmd
+      - text: Doppelkopf
+        menu:
+          - text: 2025 Season
+            href: doppelkopf/2025.qmd
+          - text: "---"
+          - text: All Time Stats
+            href: doppelkopf/all-time-stats.qmd
+          - text: Seating
+            href: doppelkopf/seating.qmd
+      - text: Decathlon
 
 
 format:

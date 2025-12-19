@@ -1,4 +1,5 @@
 /.idea/
 /.quarto/
+/.venv/
 /docs/
 **/*.quarto_ipynb
