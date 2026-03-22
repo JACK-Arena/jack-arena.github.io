@@ -11,6 +11,8 @@ website:
         href: index.qmd
       - text: Doppelkopf
         menu:
+          - text: 2026 Season
+            href: doppelkopf/2026.qmd
           - text: 2025 Season
             href: doppelkopf/2025.qmd
           - text: 2024 Season
