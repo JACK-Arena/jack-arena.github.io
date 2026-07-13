@@ -2,4 +2,7 @@
 /.quarto/
 /.venv/
 /docs/
+/node_modules/
+/dist/
+/.astro/
 **/*.quarto_ipynb

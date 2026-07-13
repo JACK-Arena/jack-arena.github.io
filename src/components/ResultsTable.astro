@@ -1,0 +1,36 @@
+---
+import type { ResultTableRow } from "../data/doppelkopf";
+
+interface Props {
+  rows: ResultTableRow[];
+}
+
+const { rows } = Astro.props;
+---
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Reihenfolge</th>
+        <th>Jakob</th>
+        <th>Adam</th>
+        <th>Christian</th>
+        <th>Konrad</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr class={row.isTotal ? "total-row" : undefined}>
+          <td>{row.date}</td>
+          <td>{row.seating}</td>
+          <td>{row.jakob}</td>
+          <td>{row.adam}</td>
+          <td>{row.christian}</td>
+          <td>{row.konrad}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

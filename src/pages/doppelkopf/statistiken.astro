@@ -1,0 +1,50 @@
+---
+import PlacementStatsTable from "../../components/PlacementStatsTable.astro";
+import SeatNeighborStatsTable from "../../components/SeatNeighborStatsTable.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getChampionshipPlacementStats,
+  getMatchdayPlacementStats,
+  getSeatNeighborStats
+} from "../../data/doppelkopf";
+
+const championshipRows = getChampionshipPlacementStats();
+const matchdayRows = getMatchdayPlacementStats();
+const seatNeighborRows = getSeatNeighborStats();
+---
+
+<BaseLayout title="Statistiken | JACK Arena">
+  <section class="hero compact">
+    <div class="shell flow">
+      <p class="eyebrow">Doppelkopf</p>
+      <h1>Statistiken</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell flow">
+      <div class="section-heading">
+        <h2>Meisterschaftserfolge</h2>
+      </div>
+      <PlacementStatsTable rows={championshipRows} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell flow">
+      <div class="section-heading">
+        <h2>Spieltagserfolge</h2>
+      </div>
+      <PlacementStatsTable rows={matchdayRows} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell flow">
+      <div class="section-heading">
+        <h2>Bester Sitzplatz</h2>
+      </div>
+      <SeatNeighborStatsTable rows={seatNeighborRows} />
+    </div>
+  </section>
+</BaseLayout>

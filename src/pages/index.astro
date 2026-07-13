@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getSeasonSummary, seasons } from "../data/doppelkopf";
+
+const currentSeason = seasons[0];
+const currentSummary = getSeasonSummary(currentSeason);
+---
+
+<BaseLayout title="JACK Arena">
+  <section class="section">
+    <div class="shell flow">
+      <div class="activity-grid">
+        <a class="activity-card" href="/doppelkopf/">
+          <img src="/images/doppelkopf-activity.png" alt="Doppelkopf cards on a green felt table." />
+          <div class="activity-card-body">
+            <div class="activity-card-header">
+              <h3>Doppelkopf</h3>
+              <span class="activity-badge">Live</span>
+            </div>
+          </div>
+        </a>
+
+        <article class="activity-card activity-card-disabled" aria-disabled="true">
+          <img src="/images/decathlon-activity.png" alt="Track and field equipment arranged on a stadium track." />
+          <div class="activity-card-body">
+            <div class="activity-card-header">
+              <h3>Decathlon</h3>
+              <span class="activity-badge muted">Soon</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

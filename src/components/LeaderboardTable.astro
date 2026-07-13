@@ -1,0 +1,36 @@
+---
+interface Entry {
+  label: string;
+  total: number;
+  gapToPrevious: number | null;
+}
+
+interface Props {
+  entries: Entry[];
+}
+
+const { entries } = Astro.props;
+---
+
+<div class="table-wrap">
+  <table>
+    <thead>
+        <tr>
+          <th>Platz</th>
+          <th>Spieler</th>
+          <th>Gesamtpunkte</th>
+          <th>Abstand</th>
+        </tr>
+      </thead>
+      <tbody>
+      {entries.map((entry, index) => (
+        <tr class={`rank-row rank-${index + 1}`}>
+          <td>{index + 1}</td>
+          <td>{entry.label}</td>
+          <td>{entry.total}</td>
+          <td>{entry.gapToPrevious ?? "-"}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,49 @@
+---
+import { seasons } from "../data/doppelkopf";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "JACK Arena Doppelkopf archive and standings." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <nav class="site-nav" aria-label="Primary">
+          <a href="/">JACK ARENA</a>
+          <details class="nav-group">
+            <summary>Doppelkopf</summary>
+            <div class="nav-panel">
+              <details class="nav-subgroup">
+                <summary>Meisterschaften</summary>
+                <div class="nav-subpanel">
+                  {seasons.map((season) => (
+                    <a href={`/doppelkopf/${season}/`}>{season}</a>
+                  ))}
+                </div>
+              </details>
+              <a href="/doppelkopf/all-time-stats/">Ewige Tabelle</a>
+              <a href="/doppelkopf/statistiken/">Statistiken</a>
+              <a href="/doppelkopf/seating/">Sitzreihenfolgen</a>
+            </div>
+          </details>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LeaderboardTable from "../../components/LeaderboardTable.astro";
+import ResultsTable from "../../components/ResultsTable.astro";
+import { getSeasonResults, getSeasonSummary, getTableRows, seasons } from "../../data/doppelkopf";
+
+export function getStaticPaths() {
+  return seasons.map((season) => ({
+    params: { season: String(season) }
+  }));
+}
+
+const season = Number.parseInt(Astro.params.season ?? "", 10);
+const matches = getSeasonResults(season);
+const summary = getSeasonSummary(season);
+const rows = getTableRows([...matches].reverse(), false);
+---
+
+<BaseLayout title={`Meisterschaft ${season} | JACK Arena`}>
+  <section class="hero compact">
+    <div class="shell flow">
+      <p class="eyebrow">Doppelkopf</p>
+      <h1>{`Meisterschaft ${season}`}</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell flow">
+      <div class="section-heading">
+        <h2>Tabelle</h2>
+      </div>
+      <LeaderboardTable entries={summary.leaderboard} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell flow">
+      <div class="section-heading">
+        <h2>Ergebnisse</h2>
+      </div>
+      <ResultsTable rows={rows} />
+    </div>
+  </section>
+</BaseLayout>

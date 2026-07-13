@@ -1,0 +1,43 @@
+---
+interface Row {
+  label: string;
+  firstPlaces: number;
+  secondPlaces: number;
+  thirdPlaces: number;
+  fourthPlaces: number;
+  status: string;
+}
+
+interface Props {
+  rows: Row[];
+}
+
+const { rows } = Astro.props;
+---
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Spieler</th>
+        <th>1. Platz</th>
+        <th>2. Platz</th>
+        <th>3. Platz</th>
+        <th>4. Platz</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td>{row.label}</td>
+          <td>{row.firstPlaces}</td>
+          <td>{row.secondPlaces}</td>
+          <td>{row.thirdPlaces}</td>
+          <td>{row.fourthPlaces}</td>
+          <td>{row.status}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

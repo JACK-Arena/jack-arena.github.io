@@ -1,0 +1,46 @@
+---
+interface Row {
+  label: string;
+  leftShare: number;
+  rightShare: number;
+}
+
+interface Props {
+  rows: Row[];
+}
+
+const { rows } = Astro.props;
+
+const percentFormatter = new Intl.NumberFormat("de-DE", {
+  minimumFractionDigits: 1,
+  maximumFractionDigits: 1
+});
+
+const maxLeftShare = Math.max(...rows.map((row) => row.leftShare));
+const maxRightShare = Math.max(...rows.map((row) => row.rightShare));
+---
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Spieler</th>
+        <th>Links</th>
+        <th>Rechts</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td>{row.label}</td>
+          <td>
+            {row.leftShare === maxLeftShare ? <strong>{percentFormatter.format(row.leftShare)} %</strong> : `${percentFormatter.format(row.leftShare)} %`}
+          </td>
+          <td>
+            {row.rightShare === maxRightShare ? <strong>{percentFormatter.format(row.rightShare)} %</strong> : `${percentFormatter.format(row.rightShare)} %`}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

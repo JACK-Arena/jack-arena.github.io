@@ -1,0 +1,23 @@
+---
+import { seasons } from "../../data/doppelkopf";
+
+const currentSeason = seasons[0];
+const target = `/doppelkopf/${currentSeason}/`;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Doppelkopf | JACK Arena</title>
+    <link rel="canonical" href={target} />
+  </head>
+  <body>
+    <script is:inline set:html={`window.location.replace(${JSON.stringify(target)});`}></script>
+    <p>
+      Weiterleitung zu <a href={target}>{`Meisterschaft ${currentSeason}`}</a>.
+    </p>
+  </body>
+</html>

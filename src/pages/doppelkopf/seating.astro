@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getSeatingStats } from "../../data/doppelkopf";
+
+const seating = getSeatingStats();
+---
+
+<BaseLayout title="Sitzreihenfolgen | JACK Arena">
+  <section class="hero compact">
+    <div class="shell flow">
+      <p class="eyebrow">Doppelkopf</p>
+      <h1>Sitzreihenfolgen</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell flow">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Sitzreihenfolge</th>
+              <th>Spiele</th>
+            </tr>
+          </thead>
+          <tbody>
+            {seating.orderCounts.map((entry) => (
+              <tr>
+                <td>{entry.order}</td>
+                <td>{entry.count}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
