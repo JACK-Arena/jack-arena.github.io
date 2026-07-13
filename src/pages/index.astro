@@ -1,14 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getSeasonSummary, seasons } from "../data/doppelkopf";
-
-const currentSeason = seasons[0];
-const currentSummary = getSeasonSummary(currentSeason);
 ---
 
 <BaseLayout title="JACK Arena">
   <section class="section">
     <div class="shell flow">
+      <div class="section-heading">
+        <h2>Disziplinen</h2>
+      </div>
       <div class="activity-grid">
         <a class="activity-card" href="/doppelkopf/">
           <img src="/images/doppelkopf-activity.png" alt="Doppelkopf cards on a green felt table." />
